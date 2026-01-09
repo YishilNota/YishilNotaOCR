@@ -21,6 +21,12 @@ This application is built using a high-performance, modern .NET stack:
 
 1. Download the latest release from the **Releases** page.
 2. Run `YishilNotaOCR.exe`.
+   
+<img width="1076" height="619" alt="1" src="https://github.com/user-attachments/assets/9d4e6d65-66a3-4200-add4-02ce5d63de94" />
+
+<img width="1066" height="613" alt="2" src="https://github.com/user-attachments/assets/52147e91-7104-422b-8fbd-4062366d4ad4" />
+
+<img width="1069" height="613" alt="3" src="https://github.com/user-attachments/assets/1a312c09-b95a-4afc-9b6a-36a92ae56a00" />
 
 ## ⚖️ Disclaimer
 
