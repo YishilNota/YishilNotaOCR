@@ -1,0 +1,135 @@
+﻿<UserControl x:Class="YishilNotaOCR.FrameCreateQR"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DesignHeight="550" d:DesignWidth="800">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20" FlowDirection="RightToLeft">
+            <TextBlock Text="OCR تېكىست چىقىرىش"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="#2C2C2C"/>
+            <TextBlock Text="رەسىم ياكى ھۆججىتىدىن تېكىستنى تېز سۈرئەتتە ئايرىپ چىقىرىدۇ"
+                       FontSize="13"
+                       Foreground="#8A8A8A"
+                       Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" 
+                Background="#FDFDFD"
+                BorderBrush="#E0E0E0"
+                BorderThickness="2"
+                CornerRadius="12"
+                AllowDrop="True"
+                DragOver="ImageBorder_DragOver"
+                Drop="ImageBorder_Drop">
+                
+                <Border.Style>
+                    <Style TargetType="Border">
+                        <Setter Property="BorderBrush" Value="#E0E0E0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" Value="#4CAF50"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+
+                <Grid AllowDrop="True" Drop="Grid_Drop">
+                    <Image x:Name="imgPreview" 
+                           Stretch="Uniform" 
+                           Margin="10"/>
+
+                    <StackPanel x:Name="textHint" 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Center">
+                        <materialDesign:PackIcon Kind="CloudUpload" 
+                                                 Width="48" Height="48" 
+                                                 HorizontalAlignment="Center" 
+                                                 Foreground="#BDBDBD"/>
+                        <TextBlock Text="رەسىمنى تاللاڭ ياكى سۆرەپ قويۇڭ" 
+                                   Margin="0,10,0,0"
+                                   Foreground="#9E9E9E"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" 
+                    Background="White" 
+                    BorderBrush="#E0E0E0" 
+                    BorderThickness="1" 
+                    CornerRadius="12">
+                <Grid>
+                    <TextBox x:Name="txtResult"
+                             TextWrapping="Wrap"
+                             AcceptsReturn="True"
+                             VerticalScrollBarVisibility="Auto"
+                             BorderThickness="0"
+                             Padding="12"
+                             FontSize="14"
+                             FontFamily="UKIJ EKRAN"
+                             FlowDirection="RightToLeft"
+                             materialDesign:HintAssist.Hint="بۇ يەردە تېكىست كۆرۈنىدۇ..."
+                             Background="Transparent"/>
+
+                    <Button VerticalAlignment="Bottom" 
+                            HorizontalAlignment="Right" 
+                            Margin="10"
+                            Width="36" Height="36"
+                            Padding="0"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}"
+                            Background="#F0F0F0" BorderBrush="Transparent"
+                            Click="BtnCopy_Click"
+                            ToolTip="كۆچۈرۈش">
+                        <materialDesign:PackIcon Kind="ContentCopy" Width="18" Foreground="#616161"/>
+                    </Button>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center" 
+                    Margin="0,20,0,0">
+
+            <Button Click="BtnLoad_Click"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    BorderBrush="#4CAF50" Foreground="#4CAF50"
+                    Width="140" Height="45"
+                    materialDesign:ButtonAssist.CornerRadius="22">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="ImagePlus" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="رەسىم ئېچىش"/>
+                </StackPanel>
+            </Button>
+
+            <Button Click="BtnOcr_Click"
+                    Margin="20,0,0,0"
+                    Background="#4CAF50" BorderBrush="#4CAF50"
+                    Width="180" Height="45"
+                    materialDesign:ButtonAssist.CornerRadius="22">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="AutoFix" Margin="0,0,8,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="تېكىستنى ئايرىش" FontWeight="Bold"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

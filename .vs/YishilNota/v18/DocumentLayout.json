@@ -1,0 +1,52 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Project\\QRCreater\\YishilNotaOCR\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5D6F6D50-86A2-47D1-9BAA-F9D8A1DCCE53}|YishiNotaOCR.csproj|d:\\project\\qrcreater\\yishilnotaocr\\yishinotaocr.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{5D6F6D50-86A2-47D1-9BAA-F9D8A1DCCE53}|YishiNotaOCR.csproj|solutionrelative:yishinotaocr.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{dcc4ea97-1c0c-482b-b205-e541c0df9728}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3e9b1d15-5e8f-4994-9cd0-f3b539b7ec37}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "YishiNotaOCR",
+              "DocumentMoniker": "D:\\Project\\QRCreater\\YishilNotaOCR\\YishiNotaOCR.csproj",
+              "RelativeDocumentMoniker": "YishiNotaOCR.csproj",
+              "ToolTip": "D:\\Project\\QRCreater\\YishilNotaOCR\\YishiNotaOCR.csproj",
+              "RelativeToolTip": "YishiNotaOCR.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-01-09T15:42:31.653Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

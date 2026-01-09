@@ -1,0 +1,164 @@
+﻿<UserControl x:Class="YishilNotaOCR.FrameOCRPdf"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="650" d:DesignWidth="900">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,20" FlowDirection="RightToLeft">
+            <TextBlock Text="PDF تېكىست ئايرىش"
+                       FontSize="22"
+                       FontWeight="Bold"
+                       Foreground="#2C2C2C"/>
+            <TextBlock Text="PDF ھۆججىتىدىن ياكى تور ئادرېسىدىن تېكىست ئايرىپ چىقىرىدۇ"
+                       FontSize="13"
+                       Foreground="#8A8A8A"
+                       Margin="0,4,0,0"/>
+        </StackPanel>
+
+        <Border Grid.Row="1" Margin="0,0,0,20" Background="#F5F5F5" CornerRadius="10" Padding="12,6">
+            <Grid FlowDirection="RightToLeft">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <materialDesign:PackIcon Kind="LinkVariant" VerticalAlignment="Center" Foreground="#4CAF50" Width="18" Height="18"/>
+
+                <TextBox x:Name="txtPdfUrl" Grid.Column="1" 
+                         materialDesign:HintAssist.Hint="PDF ئادرېسىنى بۇ يەرگە كىرگۈزۈڭ (http...)"
+                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                         BorderThickness="0" VerticalAlignment="Center" Margin="15,0"
+                         FontSize="13" Foreground="#333" Background="Transparent"/>
+
+                <Button Grid.Column="2" Click="BtnDownloadPdf_Click"
+                        Style="{StaticResource MaterialDesignFlatMidBgButton}"
+                        Background="#4CAF50" BorderBrush="Transparent"
+                        Height="28" Padding="15,0" materialDesign:ButtonAssist.CornerRadius="16">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Download" Width="16" Height="16" Margin="0,0,5,0"/>
+                        <TextBlock Text="چۈشۈرۈش" VerticalAlignment="Center" FontSize="12"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="260"/>
+                <ColumnDefinition Width="15"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="#FDFDFD" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="بەت تىزىملىكى" Margin="10,10,10,5" FontSize="13" Foreground="#616161" FlowDirection="RightToLeft" FontWeight="SemiBold"/>
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                        <ItemsControl x:Name="ItemsPages" Padding="5">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border Margin="0,0,0,8" Padding="5" Background="White" CornerRadius="6" BorderThickness="1" BorderBrush="#EEEEEE">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <CheckBox IsChecked="{Binding IsSelected}" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <Border Grid.Column="1" Height="50" CornerRadius="4" Background="#F5F5F5">
+                                                <Image Source="{Binding Thumbnail}" Stretch="Uniform"/>
+                                            </Border>
+                                            <TextBlock Grid.Column="2" Text="{Binding PageNumber}" Margin="8,0,0,0" VerticalAlignment="Center" Foreground="#9E9E9E" FontSize="12"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="2" Background="White" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="10">
+                <Grid>
+                    <TextBox x:Name="txtResult" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
+                             BorderThickness="0" Padding="12,12,12,50" FontSize="14" FlowDirection="RightToLeft" FontFamily="UKIJ EKRAN"
+                             materialDesign:HintAssist.Hint="بۇ يەردە تېكىست كۆرۈنىدۇ..." Background="Transparent"/>
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10">
+                        <Button Width="30" Height="30" Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}"
+                                Background="#F5F5F5" BorderBrush="Transparent" Click="BtnCopy_Click" ToolTip="كۆچۈرۈش" Margin="0,0,8,0">
+                            <materialDesign:PackIcon Kind="ContentCopy" Width="14" Height="14" Foreground="#616161"/>
+                        </Button>
+                        <Button Width="30" Height="30" Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}"
+                                Background="#F5F5F5" BorderBrush="Transparent" Click="BtnExportTxt_Click" ToolTip="TXT غا چىقىرىش" Margin="0,0,8,0">
+                            <materialDesign:PackIcon Kind="FileDocumentOutline" Width="14" Height="14" Foreground="#616161"/>
+                        </Button>
+                        <Button Width="30" Height="30" Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}"
+                                Background="#F5F5F5" BorderBrush="Transparent" Click="BtnExportWord_Click" ToolTip="Word غا چىقىرىش">
+                            <materialDesign:PackIcon Kind="FileWordOutline" Width="14" Height="14" Foreground="#616161"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,15,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Center" FlowDirection="RightToLeft" Margin="0,0,15,0">
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                    <materialDesign:PackIcon Kind="FileDocument" Foreground="#4CAF50" VerticalAlignment="Center" Width="16" Height="16"/>
+                    <TextBlock x:Name="txtFileName" Text="ھۆججەت تاللانمىدى" Margin="8,0,8,0" Foreground="#2C2C2C" 
+                               FontSize="12" FontWeight="Bold" VerticalAlignment="Center" 
+                               MaxWidth="300" TextTrimming="CharacterEllipsis"/>
+
+                    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5,0" Background="#E0E0E0"/>
+
+                    <materialDesign:PackIcon Kind="InformationOutline" Foreground="#8A8A8A" VerticalAlignment="Center" Width="16" Height="16" Margin="5,0,0,0"/>
+                    <TextBlock x:Name="txtStatus" Text="تەييار" Margin="8,0,0,0" Foreground="#616161" 
+                               FontSize="12" VerticalAlignment="Center" TextWrapping="Wrap"/>
+                </StackPanel>
+                <ProgressBar x:Name="pbOCR" Visibility="Collapsed" Height="4" Minimum="0" Maximum="100" 
+                             Foreground="#4CAF50" Background="#E0E0E0" Margin="24,0,0,0"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Click="BtnLoadPdf_Click" Style="{StaticResource MaterialDesignOutlinedButton}"
+                        BorderBrush="#4CAF50" Foreground="#4CAF50" Width="120" Height="36"
+                        materialDesign:ButtonAssist.CornerRadius="18" FontSize="12.5">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FilePdfBox" Margin="0,0,6,0" VerticalAlignment="Center" Width="14"/>
+                        <TextBlock Text="PDF ئېچىش" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <Button x:Name="btnStartOCR" Click="BtnStartPdfOcr_Click" Margin="10,0,0,0"
+                        Background="#4CAF50" BorderBrush="#4CAF50" Width="130" Height="36"
+                        materialDesign:ButtonAssist.CornerRadius="18" FontSize="12.5">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="AutoFix" Margin="0,0,6,0" VerticalAlignment="Center" Width="14"/>
+                        <TextBlock Text="تېكىست ئايرىش" FontWeight="Bold" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

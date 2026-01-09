@@ -1,0 +1,75 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <WebView2LoaderPreference>Dynamic</WebView2LoaderPreference>
+    <WebView2EnableCsWinRTProjection>False</WebView2EnableCsWinRTProjection>
+    <WebView2UseWinRT>False</WebView2UseWinRT>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AssemblyName>$(MSBuildProjectName.Replace(" ", "_"))</AssemblyName>
+    <ApplicationIcon>Resources\ico.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Fonts\UKIJEkran.ttf" />
+    <None Remove="Fonts\UKIJJunu.ttf" />
+    <None Remove="Fonts\UKIJKesmeTuz.ttf" />
+    <None Remove="gs\gsdll64.dll" />
+    <None Remove="gs\gswin64c.exe" />
+    <None Remove="ico.png" />
+    <None Remove="icon.svg" />
+    <None Remove="scan.png" />
+    <None Remove="tessdata\Configs\bazzar" />
+    <None Remove="tessdata\uig.traineddata" />
+    <None Remove="tessdata\ukij.traineddata" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="gs\gsdll64.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="gs\gswin64c.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\ico.ico" />
+    <Content Include="tessdata\Configs\bazzar">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tessdata\uig.traineddata">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="tessdata\ukij.traineddata">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Magick.NET-Q16-AnyCPU" Version="14.10.1" />
+    <PackageReference Include="Magick.NET.Core" Version="14.10.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3537.50" />
+    <PackageReference Include="PDFsharp" Version="6.2.4" />
+    <PackageReference Include="System.Drawing.Common" Version="8.0.7" />
+    <PackageReference Include="Tesseract" Version="5.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Fonts\UKIJEkran.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\UKIJJunu.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Fonts\UKIJKesmeTuz.ttf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="ico.png" />
+  </ItemGroup>
+
+</Project>
