@@ -35,5 +35,10 @@ This application is built using a high-performance, modern .NET stack:
 - The developer assumes no liability for copyright infringement or misuse of the tool.
 
 
+## Thanks
+https://github.com/gheyret/UyghurOCR
 
-**License**: MIT License
+
+
+## License
+MIT License
