@@ -19,7 +19,7 @@ This application is built using a high-performance, modern .NET stack:
 
 ## 📦 Installation & Setup
 
-1. Download the latest release from the **Releases** page.
+1. Download and build application.
 2. Run `YishilNotaOCR.exe`.
    
 <img width="1076" height="619" alt="1" src="https://github.com/user-attachments/assets/9d4e6d65-66a3-4200-add4-02ce5d63de94" />
@@ -37,8 +37,3 @@ This application is built using a high-performance, modern .NET stack:
 
 ## Thanks
 https://github.com/gheyret/UyghurOCR
-
-
-
-## License
-MIT License
